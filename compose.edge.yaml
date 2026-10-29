@@ -1,0 +1,33 @@
+﻿services:
+  selenium:
+    image: selenium/standalone-edge:4.51.0
+    shm_size: 2gb
+    ports:
+      - "4444:4444"
+    healthcheck:
+      test:
+        - CMD
+        - /opt/bin/check-grid.sh
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+  test-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      selenium:
+        condition: service_healthy
+    environment:
+      BROWSER: edge
+      PLATFORM: remote
+      REMOTE_URL: http://selenium:4444
+      HEADLESS: "true"
+      IMPLICIT_WAIT: "0"
+      EXPLICIT_WAIT: "10"
+      REPORT_FILE: edge-report.html
+    volumes:
+      - ./Reports:/app/Reports
+      - ./artifacts:/app/artifacts

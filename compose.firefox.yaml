@@ -1,0 +1,35 @@
+﻿services:
+  selenium:
+    image: selenium/standalone-firefox:4.51.0
+    shm_size: 2gb
+    ports:
+      - "4444:4444"
+    healthcheck:
+      test:
+        - CMD
+        - /opt/bin/check-grid.sh
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+  test-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      selenium:
+        condition: service_healthy
+    environment:
+      BROWSER: firefox
+      REPORT_FILE: firefox-report.html
+      PLATFORM: remote
+      REMOTE_URL: http://selenium:4444
+      HEADLESS: "true"
+      IMPLICIT_WAIT: "0"
+      EXPLICIT_WAIT: "10"
+    volumes:
+      - ./Reports:/app/Reports
+      - ./artifacts:/app/artifacts
+
+

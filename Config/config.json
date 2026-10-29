@@ -1,0 +1,9 @@
+﻿{
+    "browser": "chrome",
+    "platform": "local",
+    "remote_url": "http://localhost:4444/wd/hub",
+    "headless": false,
+    "implicit_wait": 0,
+    "explicit_wait": 10,
+    "window_size": "1440,1000"
+}
