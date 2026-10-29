@@ -1,0 +1,51 @@
+﻿name: Cross-Browser UI Tests
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cross-browser-tests:
+    name: Run Chrome, Firefox and Edge
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Run cross-browser tests
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          for browser in chrome firefox edge; do
+            echo "========================================"
+            echo "Running ${browser} UI tests"
+            echo "========================================"
+
+            docker compose \
+              -f "compose.${browser}.yaml" \
+              up --build --abort-on-container-exit \
+              --exit-code-from test-runner
+          done
+
+          echo "All three browser suites passed."
+
+      - name: Upload browser HTML reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cross-browser-html-reports
+          path: |
+            Reports/chrome-report.html
+            Reports/firefox-report.html
+            Reports/edge-report.html
+          if-no-files-found: warn
+          retention-days: 14
