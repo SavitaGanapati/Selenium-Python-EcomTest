@@ -25,18 +25,46 @@ jobs:
         run: |
           set -euo pipefail
 
+          compose_file=""
+
+          cleanup() {
+            if [[ -n "$compose_file" ]]; then
+              echo "Cleaning up: ${compose_file}"
+              docker compose -f "$compose_file" down --remove-orphans || true
+            fi
+          }
+
+          trap cleanup EXIT
+
           for browser in chrome firefox edge; do
+            compose_file="compose.${browser}.yaml"
+
             echo "========================================"
             echo "Running ${browser} UI tests"
             echo "========================================"
 
             docker compose \
-              -f "compose.${browser}.yaml" \
+              -f "$compose_file" \
               up --build --abort-on-container-exit \
               --exit-code-from test-runner
+
+            docker compose -f "$compose_file" down --remove-orphans
+
+            compose_file=""
           done
 
           echo "All three browser suites passed."
+
+          for browser in chrome firefox edge; do
+            report="Reports/${browser}-report.html"
+
+            if [[ ! -s "$report" ]]; then
+              echo "ERROR: Missing or empty report: ${report}"
+              exit 1
+            fi
+
+            echo "Verified report: ${report}"
+          done
 
       - name: Upload browser HTML reports
         if: always()
@@ -47,5 +75,5 @@ jobs:
             Reports/chrome-report.html
             Reports/firefox-report.html
             Reports/edge-report.html
-          if-no-files-found: warn
+          if-no-files-found: error
           retention-days: 14

@@ -23,6 +23,15 @@ class BrowserFactory:
 
         if browser_name == "chrome":
             options = webdriver.ChromeOptions()
+            # Disable Chrome password-manager prompts in the
+            # isolated automated test browser session.
+            prefs = {
+                "credentials_enable_service": False,
+                "profile.password_manager_enabled": False,
+                "profile.password_manager_leak_detection": False,
+            }
+
+            options.add_experimental_option("prefs", prefs)
 
             # This path is specific to local Windows execution.
             if platform == "local":

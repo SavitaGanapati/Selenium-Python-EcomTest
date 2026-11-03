@@ -28,7 +28,15 @@ def driver():
             logger.info("Closing browser: %s", config["browser"])
             browser.quit()
 
+from Pages.login_page import LoginPage
+from Pages.inventory_page import InventoryPage
 
+
+@pytest.fixture
+def logged_in_inventory(driver):
+    """Open Swag Labs, log in, and return the inventory page."""
+    LoginPage(driver).open().login()
+    return InventoryPage(driver)
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):
     outcome = yield
