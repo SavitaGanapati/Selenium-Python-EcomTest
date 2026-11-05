@@ -1,0 +1,48 @@
+{
+    "test_id": "GEN-API-004",
+    "scenario": "Missing prompt field",
+    "execution_id": "20261104T161958584159Z",
+    "http_status_code": 200,
+    "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Wed, 04 Nov 2026 16:20:04 GMT",
+        "Content-Length": "113",
+        "Connection": "close"
+    },
+    "response_body_raw": "{\"model\":\"qwen3.5:4b\",\"created_at\":\"2026-11-04T16:20:04.9380919Z\",\"response\":\"\",\"done\":true,\"done_reason\":\"load\"}",
+    "response_body_json": {
+        "model": "qwen3.5:4b",
+        "created_at": "2026-11-04T16:20:04.9380919Z",
+        "response": "",
+        "done": true,
+        "done_reason": "load"
+    },
+    "transport_error": null,
+    "assertions": [
+        {
+            "description": "HTTP status is 200",
+            "result": "PASSED"
+        },
+        {
+            "description": "Response is valid JSON",
+            "result": "PASSED"
+        },
+        {
+            "description": "Generation marked complete",
+            "result": "PASSED"
+        },
+        {
+            "description": "Response is empty",
+            "result": "PASSED"
+        },
+        {
+            "description": "Done reason is load",
+            "result": "PASSED"
+        },
+        {
+            "description": "No transport error",
+            "result": "PASSED"
+        }
+    ],
+    "test_result": "PASSED"
+}

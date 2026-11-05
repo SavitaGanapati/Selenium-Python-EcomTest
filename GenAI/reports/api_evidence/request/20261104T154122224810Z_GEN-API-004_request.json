@@ -1,0 +1,19 @@
+{
+    "test_id": "GEN-API-004",
+    "scenario": "Missing prompt field",
+    "execution_id": "20261104T154122224810Z",
+    "method": "POST",
+    "endpoint": "http://localhost:11434/api/generate",
+    "headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+    },
+    "body": {
+        "model": "qwen3.5:4b",
+        "stream": false,
+        "options": {
+            "temperature": 0,
+            "num_ctx": 4096
+        }
+    }
+}

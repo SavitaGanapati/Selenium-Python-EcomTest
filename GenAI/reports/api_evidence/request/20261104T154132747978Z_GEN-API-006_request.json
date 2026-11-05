@@ -1,0 +1,20 @@
+{
+    "test_id": "GEN-API-006",
+    "scenario": "Incorrect Content-Type",
+    "execution_id": "20261104T154132747978Z",
+    "method": "POST",
+    "endpoint": "http://localhost:11434/api/generate",
+    "headers": {
+        "Content-Type": "text/plain",
+        "Accept": "application/json"
+    },
+    "body": {
+        "model": "qwen3.5:4b",
+        "prompt": "Return exactly: GENAI_API_CONTRACT_SUCCESS",
+        "stream": false,
+        "options": {
+            "temperature": 0,
+            "num_ctx": 4096
+        }
+    }
+}

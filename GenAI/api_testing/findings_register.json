@@ -1,0 +1,40 @@
+{
+    "project": "Enterprise GenAI Quality Engineering Framework",
+    "test_target": "Ollama REST API - Qwen 3.5 4B",
+    "register_version": "1.0",
+    "findings": [
+        {
+            "finding_id": "GEN-FND-001",
+            "test_id": "GEN-API-004",
+            "title": "Missing prompt accepted by API",
+            "category": "Request validation",
+            "observed_behavior": "HTTP 200 returned with an empty response, done=true and done_reason=load.",
+            "expected_behavior": "To be defined by the approved API contract.",
+            "risk": "Requests without meaningful input may be accepted without an explicit validation error.",
+            "classification": "Contract review observation",
+            "status": "OPEN_FOR_REVIEW"
+        },
+        {
+            "finding_id": "GEN-FND-002",
+            "test_id": "GEN-API-006",
+            "title": "Incorrect Content-Type accepted",
+            "category": "HTTP request validation",
+            "observed_behavior": "Request with Content-Type text/plain was accepted and generation succeeded.",
+            "expected_behavior": "To be defined by the approved API contract.",
+            "risk": "Clients may rely on permissive content-type handling rather than sending the documented media type.",
+            "classification": "Contract review observation",
+            "status": "OPEN_FOR_REVIEW"
+        },
+        {
+            "finding_id": "GEN-FND-003",
+            "test_id": "GEN-API-003",
+            "title": "Missing model produces model-not-found error",
+            "category": "Error handling",
+            "observed_behavior": "HTTP 404 returned with error message model '' not found.",
+            "expected_behavior": "To be defined by the approved API contract.",
+            "risk": "The response does not clearly distinguish a missing required field from an unknown model.",
+            "classification": "Error response quality observation",
+            "status": "OPEN_FOR_REVIEW"
+        }
+    ]
+}

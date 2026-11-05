@@ -1,0 +1,9 @@
+{
+    "test_id": "GEN-API-005",
+    "scenario": "Malformed JSON",
+    "execution_id": "20261104T162004944922Z",
+    "url": "http://localhost:11434/api/generate",
+    "method": "POST",
+    "content_type": "application/json",
+    "request_body": "{\"model\":"
+}

@@ -4,3 +4,4 @@ pytest-html==4.2.0
 python-dotenv==1.2.4
 requests==2.34.2
 allure-pytest==2.16.2
+jsonschema==4.26.0

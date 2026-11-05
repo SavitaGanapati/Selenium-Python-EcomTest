@@ -1,0 +1,9 @@
+{
+    "model": "qwen3.5:4b",
+    "prompt": "Return exactly: GENAI_API_CONTRACT_SUCCESS",
+    "stream": false,
+    "options": {
+        "temperature": 0,
+        "num_ctx": 4096
+    }
+}

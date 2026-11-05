@@ -1,0 +1,17 @@
+{
+    "test_id": "GEN-API-003",
+    "scenario": "Missing model field",
+    "execution_id": "20261104T154120178567Z",
+    "http_status_code": 404,
+    "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Wed, 04 Nov 2026 15:41:22 GMT",
+        "Content-Length": "30",
+        "Connection": "close"
+    },
+    "response_body_raw": "{\"error\":\"model '' not found\"}",
+    "response_body_json": {
+        "error": "model '' not found"
+    },
+    "transport_error": null
+}

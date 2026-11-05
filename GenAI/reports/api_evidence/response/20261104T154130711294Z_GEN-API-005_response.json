@@ -1,0 +1,17 @@
+{
+    "test_id": "GEN-API-005",
+    "scenario": "Malformed JSON",
+    "execution_id": "20261104T154130711294Z",
+    "http_status_code": 400,
+    "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Wed, 04 Nov 2026 15:41:32 GMT",
+        "Content-Length": "26",
+        "Connection": "close"
+    },
+    "response_body_raw": "{\"error\":\"unexpected EOF\"}",
+    "response_body_json": {
+        "error": "unexpected EOF"
+    },
+    "transport_error": null
+}

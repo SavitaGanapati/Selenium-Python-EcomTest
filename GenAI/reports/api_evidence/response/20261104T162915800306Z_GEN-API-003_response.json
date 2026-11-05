@@ -1,0 +1,32 @@
+{
+    "test_id": "GEN-API-003",
+    "scenario": "Missing model field",
+    "execution_id": "20261104T162915800306Z",
+    "http_status_code": 404,
+    "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Wed, 04 Nov 2026 16:29:17 GMT",
+        "Content-Length": "30",
+        "Connection": "close"
+    },
+    "response_body_raw": "{\"error\":\"model '' not found\"}",
+    "response_body_json": {
+        "error": "model '' not found"
+    },
+    "transport_error": null,
+    "assertions": [
+        {
+            "description": "HTTP status is 404",
+            "result": "PASSED"
+        },
+        {
+            "description": "Error identifies empty model name",
+            "result": "PASSED"
+        },
+        {
+            "description": "No transport error",
+            "result": "PASSED"
+        }
+    ],
+    "test_result": "PASSED"
+}

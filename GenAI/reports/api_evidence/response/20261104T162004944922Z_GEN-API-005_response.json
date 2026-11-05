@@ -1,0 +1,32 @@
+{
+    "test_id": "GEN-API-005",
+    "scenario": "Malformed JSON",
+    "execution_id": "20261104T162004944922Z",
+    "http_status_code": 400,
+    "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Wed, 04 Nov 2026 16:20:06 GMT",
+        "Content-Length": "26",
+        "Connection": "close"
+    },
+    "response_body_raw": "{\"error\":\"unexpected EOF\"}",
+    "response_body_json": {
+        "error": "unexpected EOF"
+    },
+    "transport_error": null,
+    "assertions": [
+        {
+            "description": "HTTP status is 400",
+            "result": "PASSED"
+        },
+        {
+            "description": "Error identifies malformed JSON",
+            "result": "PASSED"
+        },
+        {
+            "description": "No transport error",
+            "result": "PASSED"
+        }
+    ],
+    "test_result": "PASSED"
+}

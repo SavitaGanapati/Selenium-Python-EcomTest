@@ -1,0 +1,9 @@
+{
+    "test_id": "GEN-API-003",
+    "scenario": "Missing model field",
+    "execution_id": "20261105T035739235587Z",
+    "url": "http://localhost:11434/api/generate",
+    "method": "POST",
+    "content_type": "application/json",
+    "request_body": "{\"prompt\": \"Return exactly: GENAI_API_CONTRACT_SUCCESS\", \"stream\": false, \"options\": {\"temperature\": 0, \"num_ctx\": 4096}}"
+}
